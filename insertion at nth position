@@ -1,0 +1,48 @@
+/** Here end cases have not been adjusted and input is not taken from user.Program can be modified accordingly.This
+program is just a demonstration of inseting a node at nth position where input has to be valid.
+**/
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insert(node *head, int a1,int a2){
+    node* temp1= new node();
+    temp1->data=a1;
+    temp1->next= NULL;
+    //head=temp;
+    if(a2==1)
+    {
+        temp1->next=head;
+        head=temp1;
+        return head;
+    }
+    node* temp2 = head;
+    for (int i=0;i<a2-2;i++){
+        temp2=temp2->next;
+    }
+    temp1->next=temp2->next;
+    temp2->next=temp1;
+    return head;
+}
+void print(node* head ){
+    
+    while(head != NULL){
+        cout<<head->data<<" ";
+        
+        head=head->next;
+    }
+}
+node* head;
+int main(){
+    head = NULL;
+    head= insert(head,2,1);
+    head= insert(head,3,2);
+    head= insert(head,56,3);
+    head=insert(head,34,4);
+    print(head);
+    cout<<endl;
+    return 0;
+}
+
