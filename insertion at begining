@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insert(node *head, int a1){
+    node* temp= new node();
+    temp->data=a1;
+    temp->next= head;
+    head=temp;
+    return head;
+}
+void print(node* head ){
+    
+    while(head != NULL){
+        cout<<head->data<<" ";
+        
+        head=head->next;
+    }
+}
+node* head;
+int main(){
+     head = NULL;
+    cout<<"How many digits you want"<<" ";
+    int n,x;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        //cout<<"Enter number"<<endl;
+        cin>>x;
+        head= insert(head,x);
+        
+    }
+    print(head);
+    cout<<endl;
+    return 0;
+}
