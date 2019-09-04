@@ -1,0 +1,63 @@
+/*This an implementation for reversing linked list(recursively) while inserting the elements at last position
+ Input is assumed to be valid
+ */
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insert(node *head, int a1){
+    node* temp1= new node();
+    temp1->data=a1;
+    temp1->next = NULL;
+    if (head==NULL) {
+        head=temp1;
+        return head;
+    }
+    node* temp2;
+    temp2=head;
+    while(temp2->next!=NULL){
+        temp2=temp2->next;
+    }
+    temp2->next=temp1;
+    return head;
+}
+void print(node* head ){
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+node* rreverse(node* p ){
+    node* ptr,*m;
+    if (p->next==NULL) {
+        ptr=p;
+        
+        return p;
+    }
+    
+    m=rreverse(p->next);
+    node* q=p->next;
+    q->next=p;
+    p->next=NULL;
+   
+    return m ;
+}
+
+int main(){
+    node *head = NULL;
+    head= insert(head,2);
+    head= insert(head,3);
+    head= insert(head,56);
+    head= insert(head,34);
+    print(head);
+    cout<<endl;
+    head=rreverse(head);
+    print(head);
+    cout<<endl;
+    
+    
+    return 0;
+}
+
