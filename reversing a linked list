@@ -1,4 +1,4 @@
-/*This an implementation for reversing a linked list while inserting the elements at last position
+/*This an implementation for reversing a linked list (iteratively) while inserting the elements at last position
 Input is assumed to be valid
  */
 #include <iostream>
