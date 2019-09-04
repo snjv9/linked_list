@@ -1,0 +1,64 @@
+/*This an implementation for deleting a node at nth position from linked list while inserting the elements at last position
+Input is assumed to be valid
+ */
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+node* insert(node *head, int a1){
+    node* temp1= new node();
+    temp1->data=a1;
+    temp1->next = NULL;
+    if (head==NULL) {
+        head=temp1;
+        return head;
+    }
+    node* temp2;
+    temp2=head;
+    while(temp2->next!=NULL){
+        temp2=temp2->next;
+        }
+    temp2->next=temp1;
+    return head;
+}
+void print(node* head ){
+    
+    while(head != NULL){
+        cout<<head->data<<" ";
+        
+        head=head->next;
+    }
+}
+
+node* del(node* head, int a){
+    node* temp1 =head;
+    if(a==1){
+        head=temp1->next;
+        delete temp1;
+        return head;
+    }
+    for(int i=0;i<a-2;i++){
+        temp1=temp1->next;   //pointer to n-1 node
+    }
+    node* temp2=temp1->next;   //pointer to n
+    temp1->next=temp2->next;   //pointer to n+1
+    delete temp2;
+    return head;
+}
+int main(){
+    node *head = NULL;
+    head= insert(head,2);
+    head= insert(head,3);
+    head= insert(head,56);
+    head= insert(head,34);
+    print(head);
+    cout<<endl;
+    head= del(head,3);
+    print(head);
+    //print(head);
+    cout<<endl;
+    return 0;
+}
+
