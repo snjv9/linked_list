@@ -1,0 +1,44 @@
+//The input in program is not user defined
+
+
+#include<iostream>
+using namespace std;
+class stack{
+public:
+    int arr[50];
+    int t=-1;
+    void push(int a)
+    {
+        if(t==9){
+            cout<<"stack Overflow"<<endl;
+            t=-1;
+        }
+        t+=1;
+        arr[t]=a;
+    }
+    void pop(){
+        t--;
+    }
+    int top(){
+        cout<<"Element at top :";
+        return arr[t];
+    }
+    void print(){
+        cout<<"Current Stack :";
+        for(int i=0;i<=t;i++){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
+};
+int main(){
+    stack s1;
+    s1.push(2);
+    s1.push(4);
+    s1.push(6);
+    s1.print();
+    s1.pop();
+    s1.print();
+    int aa= s1.top();
+    cout<<aa<<endl;
+}
