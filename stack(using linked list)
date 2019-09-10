@@ -1,0 +1,42 @@
+//this is a linked list implementation of stack
+
+#include<iostream>
+using namespace std;
+class stack {
+public:
+    int data;
+    stack* next;
+    
+    stack* push(stack* top,int a){
+        stack* temp= new stack();
+        temp->data=a;
+        temp->next=top;
+        top=temp;
+        return top;
+    }
+    void print(stack* top){
+        while(top!=NULL){
+            cout<<top->data<<" ";
+            top=top->next;
+        }
+        cout<<endl;
+    }
+    stack* pop(stack* top){
+        stack* temp = top;
+        top=temp->next;
+        delete temp;
+        return top;
+    }
+};
+int main(){
+    stack* top=NULL;
+    stack s1;
+    top=s1.push(top,2);
+    top=s1.push(top,3);
+    top=s1.push(top,5);
+    top=s1.push(top,8);
+    s1.print(top);
+    top=s1.pop(top);
+    s1.print(top);
+    return 0;
+}
