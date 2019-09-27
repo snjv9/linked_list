@@ -1,0 +1,49 @@
+//matching paranthesis problem
+#include <iostream>
+#include <cstring>
+#include <stack>
+#include <iterator>
+using namespace std;
+bool is_pair(char a,char b){
+    if(a=='{' && b=='}'){return true;}
+    else if (a== '[' && b== ']'){return true;}
+    else if (a== '(' && b== ')'){return true;}
+    else
+        return false;
+}
+
+bool match(string &s1){
+    stack<char> s;
+    //int l=s1.length();
+    for(auto i=s1.begin();i!=s1.end();i++){
+        if(*i=='{' || *i=='[' || *i=='('){
+            s.push(*i);
+        }
+        else if(*i=='}' || *i==']' || *i==')'){
+            if(s.empty() || !is_pair(s.top(), *i )){
+                return false;
+            }
+            else{
+                s.pop();
+            }
+        }
+    }
+        return s.empty()? true:false;
+    
+}
+int main()
+{
+    string s1;
+    bool d;
+    cout<<" Enter String"<<endl;
+    cin>>s1;
+    d= match(s1);
+    
+   if (d==true) {
+        cout<<"Matching"<<endl;
+    }
+    else
+        cout<<"No Matching"<<endl;
+    
+    return 0;
+}
