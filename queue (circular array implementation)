@@ -1,0 +1,79 @@
+#include<iostream>
+#define size 4
+using namespace std;
+class queue {
+private:
+   // int size=10;
+    int arr[size];
+    int front,rear;
+public:
+    queue (){
+        front=-1;
+        rear=-1;
+    }
+    bool is_full(){
+        if((rear+1)%size==front){
+            //cout<<" Queue is full"<<endl;
+            return true;
+        }
+        else
+            return false;
+    }
+    bool is_empty(){
+        if(front==-1 && rear==-1){
+            return true;
+        }
+        else
+            return false;
+    }
+    void push(int a){
+        if(is_full()){
+            cout<<"Queue is full"<<endl;
+            return ;
+        }
+        else if (is_empty()){
+            front++;
+            rear++;
+            arr[rear]=a;
+        }
+        else{
+            rear=(rear+1)%size;
+            arr[rear]=a;
+        }
+    }
+    void pop(){
+        if(is_empty()){
+            cout<<"Queue is empty "<<endl;
+            return ;
+        }
+        else {
+            front=(front+1)%size;
+        }
+    }
+    void print()
+   {
+        int count = (rear+size-front) % size +1;
+        for(int i=0;i<count;i++)
+        {
+           int index=(front+i)%size;
+            cout<<arr[index]<<" ";
+        }
+        cout<<"\n";
+    }
+   
+   
+};
+int main(){
+    queue q;
+    
+    //int front= -1,back= -1;
+    q.push(2);
+    q.push(5);
+    q.push(4);
+    q.pop();
+    q.push(3);
+    //q.push(9);
+    q.print();
+    q.push(9);
+    q.print();
+}
